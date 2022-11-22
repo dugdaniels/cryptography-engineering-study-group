@@ -5,35 +5,30 @@ pub fn encode(text: &str, key: &str) -> String {
         .filter(|c| c.is_alphabetic())
         .collect::<String>();
 
-    let mut key_iter = key.chars().cycle();
-    let mut result = String::new();
+    text.chars()
+        .zip(key.chars().cycle())
+        .map(|(text_char, key_char)| {
+            let key_index = key_char as u8 - b'A';
+            let text_index = text_char as u8 - b'A';
+            let new_index = (text_index + key_index) % 26;
 
-    for c in text.chars() {
-        let key_char = key_iter.next().unwrap();
-
-        let key_index = key_char as u8 - b'A';
-        let c_index = c as u8 - b'A';
-        let new_index = (c_index + key_index) % 26;
-
-        result.push((new_index + b'A') as char);
-    }
-    result
+            (new_index + b'A') as char
+        })
+        .collect()
 }
 
 pub fn decode(cipher: &str, key: &str) -> String {
-    let mut key_iter = key.chars().cycle();
-    let mut result = String::new();
+    cipher
+        .chars()
+        .zip(key.chars().cycle())
+        .map(|(cipher_char, key_char)| {
+            let key_index = key_char as u8 - b'A';
+            let cipher_index = cipher_char as u8 - b'A';
+            let new_index = (cipher_index + 26 - key_index) % 26;
 
-    for c in cipher.chars() {
-        let key_char = key_iter.next().unwrap();
-
-        let key_index = key_char as u8 - b'A';
-        let c_index = c as u8 - b'A';
-        let new_index = (c_index + 26 - key_index) % 26;
-
-        result.push((new_index + b'A') as char);
-    }
-    result
+            (new_index + b'A') as char
+        })
+        .collect()
 }
 
 #[cfg(test)]
