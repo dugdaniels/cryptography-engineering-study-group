@@ -25,3 +25,7 @@ Q7. Consider a symmetric-key cryptosystem in which cryptographic keys are random
 > ```rust
 > 2.pow(256)
 > ```
+
+# General
+
+// TODO: Add general questions

@@ -6,3 +6,18 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+rand = "0.8.5"
+rsa = "0.7.2"
+rsa-oaep-pss = "1"
+sha2 = "0.10.6"
+
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "rsa_benchmark"
+harness = false
+
+[[bench]]
+name = "vigenere_benchmark"
+harness = false
