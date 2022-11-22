@@ -50,7 +50,7 @@ You want to understand a paper on a new polynomial commitment scheme, but you’
 
 Implement the Vignère cipher in 100 lines or less.
 
-> Completed in `session-one/src/lib.rs`
+> Completed in `session-one/src/vigenere.rs`
 
 What is a side channel attack? Is your cipher implementation constant time?
 
