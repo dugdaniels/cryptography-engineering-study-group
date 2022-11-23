@@ -5,19 +5,8 @@ pub struct Vigenere {
 impl Vigenere {
     pub fn new(key: &str) -> Self {
         Self {
-            key: key
-                .to_uppercase()
-                .chars()
-                .filter(|c| c.is_alphabetic())
-                .collect::<String>(),
+            key: Self::parse_input(key),
         }
-    }
-
-    fn parse_input(text: &str) -> String {
-        text.to_uppercase()
-            .chars()
-            .filter(|c| c.is_alphabetic())
-            .collect()
     }
 
     pub fn encode(&self, text: &str) -> String {
@@ -45,6 +34,13 @@ impl Vigenere {
 
                 (new_index + b'A') as char
             })
+            .collect()
+    }
+
+    fn parse_input(text: &str) -> String {
+        text.to_uppercase()
+            .chars()
+            .filter(|c| c.is_alphabetic())
             .collect()
     }
 }
