@@ -1,4 +1,3 @@
-use aes::cipher::generic_array::typenum::U32;
 use aes::cipher::{generic_array::GenericArray, BlockDecrypt, BlockEncrypt, KeyInit};
 use aes::Aes256;
 
@@ -8,7 +7,7 @@ pub struct Aes {
 
 impl Aes {
     pub fn new(key: &[u8]) -> Self {
-        let cipher = Aes256::new(GenericArray::<u8, U32>::from_slice(key));
+        let cipher = Aes256::new(GenericArray::from_slice(key));
         Self { cipher }
     }
 

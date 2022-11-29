@@ -1,3 +1,4 @@
+pub mod des_complementation;
 pub mod simple_aes;
 pub mod simple_rsa;
 

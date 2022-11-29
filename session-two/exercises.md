@@ -32,3 +32,5 @@ Q9. Using an existing cryptography library, encrypt the following plaintext (in 
 > Completed in `session-two/src/lib.rs`
 
 Q10. Write a program that experimentally demonstrates the complementation property for DES. This program should take as input a key `K` and a plaintext `P`and demonstrate that the DES complementation property holds for this key and plaintext. You may use an existing cryptography library for this exercise.
+
+> Completed in `session-two/src/des_complementation.rs`

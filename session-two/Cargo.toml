@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 aes = "0.8.2"
+des = "0.8.1"
 hex = "0.4.3"
 rand = "0.8.5"
 rsa = "0.7.2"
