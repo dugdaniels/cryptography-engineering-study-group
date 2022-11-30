@@ -52,3 +52,19 @@ What information, if any, can you infer about the plaintext `P′` corresponding
 > Because the plaintext corresponding to the ciphertext of one message is known, the keystream can be derived (`ciphertext = plaintext ^ keystream`), and you can decrypt any other message encrypted with the same keystream.
 
 Q4. The ciphertext (in hex): `87 F3 48 FF 79 B8 11 AF 38 57 D6 71 8E 5F 0F 91 7C 3D 26 F7 73 77 63 5A 5E 43 E9 B5 CC 5D 05 92 6E 26 FF C5 22 0D C7 D4 05 F1 70 86 70 E6 E0 17` was generated with the 256-bit AES key (also in hex) `80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01` using CBC mode with a random IV. The IV is included at the beginning of the ciphertext. Decrypt this ciphertext. You may use an existing cryptography library for this exercise.
+
+> Completed in `session-two/src/aes_cbc.rs`
+
+Q6; Let `P1, P2` be a message that is two blocks long, and let `P′1` be a message that is one block long. Let `C0, C1, C2` be the encryption of `P1, P2` using CBC mode with a random IV and a random key, and let `C′0, C′1` be the encryption of `P′1` using CBC mode with a random IV and the same key. Suppose an attacker knows `P1, P2` and suppose the attacker intercepted and thus know `C0, C1, C2` and `C′0, C′1`. Further suppose that, by random chance, `C1 = C2`. Show that the attacker can compute `P′1`.
+
+> ```
+> E(K, P2 ^ C1) == E(K, P′1 ^ C′O)  // from CBC specifications
+> P2 ^ C1 == P′1 ^ C′O              // decrypt both sides
+> P2 ^ P′1 == C1 ^ C′O              // basic algebra
+> ```
+
+## General
+
+Implement a pair of functions: A PKCS message padding function, and a padding validation function that takes a message and validates whether it has a correct padding.
+
+> Completed in `session-two/src/pkcs.rs`

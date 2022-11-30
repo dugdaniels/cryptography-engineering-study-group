@@ -1,5 +1,6 @@
 pub mod aes_in_cbc;
 pub mod des_complementation;
+pub mod pkcs;
 pub mod simple_aes;
 pub mod simple_rsa;
 
