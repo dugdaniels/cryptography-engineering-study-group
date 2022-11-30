@@ -34,3 +34,21 @@ Q9. Using an existing cryptography library, encrypt the following plaintext (in 
 Q10. Write a program that experimentally demonstrates the complementation property for DES. This program should take as input a key `K` and a plaintext `P`and demonstrate that the DES complementation property holds for this key and plaintext. You may use an existing cryptography library for this exercise.
 
 > Completed in `session-two/src/des_complementation.rs`
+
+## Ch 4:
+
+Q1. Let `P` be a plaintext and let `ℓ(P)` be the length of `P` in bytes. Let `b` be the block size of the block cipher in bytes. Explain why the following is not a good padding scheme:
+
+* Determine the minimum number of padding bytes necessary in order to pad the plaintext to a block boundary. This is a number `n` which satisfies `0 ≤ n ≤ b − 1` and `n + ℓ(P)` is a multiple of `b`. Pad the plaintext with `n` bytes of value `n`.
+
+> This is not a good padding scheme because it is not possible to distinguish between a plaintext that is already a multiple of the block size and a plaintext that has been padded. In practice all padding rules should add a minimum of one byte. 
+
+Q3. Suppose you, as an attacker, observe the following 32-byte ciphertext `C` (in hex) `46 64 DC 06 97 BB FE 69 33 07 15 07 9B A6 C2 3D 2B 84 DE 4F 90 8D 7D 34 AA CE 96 8B 64 F3 DF 75` and the following 32-byte ciphertext `C′` (also in hex) `51 7E CC 05 C3 BD EA 3B 33 57 0E 1B D8 97 D5 30 7B D0 91 6B 8D 82 6B 35 B7 8B BB 8D 74 E2 C7 3B`.
+
+Suppose you know these ciphertexts were generated using CTR mode with the same nonce. The nonce is implicit, so it is not included in the ciphertext. You also know that the plaintext `P` corresponding to `C` is `43 72 79 70 74 6F 67 72 61 70 68 79 20 43 72 79 70 74 6F 67 72 61 70 68 79 20 43 72 79 70 74 6F`.
+
+What information, if any, can you infer about the plaintext `P′` corresponding to `C′`?
+
+> Because the plaintext corresponding to the ciphertext of one message is known, the keystream can be derived (`ciphertext = plaintext ^ keystream`), and you can decrypt any other message encrypted with the same keystream.
+
+Q4. The ciphertext (in hex): `87 F3 48 FF 79 B8 11 AF 38 57 D6 71 8E 5F 0F 91 7C 3D 26 F7 73 77 63 5A 5E 43 E9 B5 CC 5D 05 92 6E 26 FF C5 22 0D C7 D4 05 F1 70 86 70 E6 E0 17` was generated with the 256-bit AES key (also in hex) `80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01` using CBC mode with a random IV. The IV is included at the beginning of the ciphertext. Decrypt this ciphertext. You may use an existing cryptography library for this exercise.

@@ -1,5 +1,6 @@
 use des::cipher::{generic_array::GenericArray, BlockDecrypt, BlockEncrypt, KeyInit};
 use des::Des;
+use hex_literal::hex;
 
 pub fn complement(data: &[u8]) -> Vec<u8> {
     data.iter().map(|x| !x).collect()
@@ -47,8 +48,8 @@ mod tests {
 
     #[test]
     fn des_works() {
-        let data = hex::decode("1fc8e5e7a322e4ad").unwrap();
-        let key = hex::decode("8000000000000001").unwrap();
+        let data = hex!("1fc8e5e7a322e4ad");
+        let key = hex!("8000000000000001");
         let cipher = SimpleDes::new(&key);
 
         let encrypted = cipher.encrypt(&data);
@@ -58,11 +59,11 @@ mod tests {
     }
 
     #[test]
-    fn des_complementation_property() {
-        let data = hex::decode("1fc8e5e7a322e4ad").unwrap();
+    fn des_complementation_works() {
+        let data = hex!("1fc8e5e7a322e4ad");
         let data_complement = complement(&data);
 
-        let key = hex::decode("8000000000000001").unwrap();
+        let key = hex!("8000000000000001");
         let key_complement = complement(&key);
 
         let lhs_cipher = SimpleDes::new(&key_complement);

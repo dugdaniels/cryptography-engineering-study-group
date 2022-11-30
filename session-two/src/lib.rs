@@ -1,3 +1,4 @@
+pub mod aes_in_cbc;
 pub mod des_complementation;
 pub mod simple_aes;
 pub mod simple_rsa;
