@@ -29,12 +29,15 @@ impl Aes {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use hex_literal::hex;
 
     #[test]
     fn aes_works() {
-        let data = hex::decode("539B333B39706D149028CFE1D9D4A407").unwrap();
-        let key = hex::decode("8000000000000000000000000000000000000000000000000000000000000001")
-            .unwrap();
+        let data = hex!("539B 333B 3970 6D14 9028 CFE1 D9D4 A407");
+        let key = hex!(
+            "8000 0000 0000 0000 0000 0000 0000 0000
+             0000 0000 0000 0000 0000 0000 0000 0001"
+        );
         let cipher = Aes::new(&key);
 
         let encrypted = cipher.encrypt(&data);

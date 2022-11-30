@@ -1,6 +1,5 @@
 use des::cipher::{generic_array::GenericArray, BlockDecrypt, BlockEncrypt, KeyInit};
 use des::Des;
-use hex_literal::hex;
 
 pub fn complement(data: &[u8]) -> Vec<u8> {
     data.iter().map(|x| !x).collect()
@@ -34,16 +33,14 @@ impl SimpleDes {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use hex_literal::hex;
 
     #[test]
     fn complement_works() {
-        let data = vec![0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07];
+        let data = hex!("0001 0203 0405 0607");
         let complement = complement(&data);
 
-        assert_eq!(
-            complement,
-            vec![0xFF, 0xFE, 0xFD, 0xFC, 0xFB, 0xFA, 0xF9, 0xF8]
-        );
+        assert_eq!(complement, hex!("fffe fdfc fbfa f9f8"));
     }
 
     #[test]

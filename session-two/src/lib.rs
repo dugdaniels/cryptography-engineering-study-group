@@ -8,13 +8,16 @@ pub mod simple_rsa;
 mod tests {
     use crate::simple_aes::Aes;
     use crate::simple_rsa::Rsa;
+    use hex_literal::hex;
 
     #[test]
     fn double_encrypt_works() {
-        let data = hex::decode("296C93FDF499AAEB4194BABC2E63561D").unwrap();
+        let data = hex!("296C 93FD F499 AAEB 4194 BABC 2E63 561D");
 
-        let key = hex::decode("8000000000000000000000000000000000000000000000000000000000000001")
-            .unwrap();
+        let key = hex!(
+            "8000 0000 0000 0000 0000 0000 0000 0000
+             0000 0000 0000 0000 0000 0000 0000 0001"
+        );
         let aes = Aes::new(&key);
 
         let rng = rand::thread_rng();
