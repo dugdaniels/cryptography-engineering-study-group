@@ -43,6 +43,19 @@ pub fn find_collision(n: NSize) -> Option<usize> {
     None
 }
 
+pub fn find_preimage(n: NSize, target_hash: &[u8]) -> Option<usize> {
+    let sha512n = Sha512n::new(n);
+
+    for i in 0..2_usize.pow(n as u32) {
+        let hash = sha512n.digest(&i.to_be_bytes());
+        if hash == target_hash {
+            return Some(i);
+        }
+    }
+
+    None
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -67,7 +80,17 @@ mod tests {
     #[test]
     fn find_collision_works() {
         let n = NSize::N16;
+        let attempts = find_collision(n);
 
-        assert!(find_collision(n).is_some());
+        assert_eq!(attempts, Some(344))
+    }
+
+    #[test]
+    fn find_preimage_works() {
+        let n = NSize::N16;
+        let target_hash = hex!("3D 4B");
+        let attempts = find_preimage(n, &target_hash);
+
+        assert_eq!(attempts, Some(38804))
     }
 }
