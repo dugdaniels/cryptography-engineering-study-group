@@ -14,9 +14,9 @@ rand = "0.8.5"
 sha2 = "0.10.6"
 sha3 = "0.10.6"
 
-# [[bench]]
-# name = "sha512n_benchmark"
-# harness = false
+[[bench]]
+name = "sha512n_benchmark"
+harness = false
 
 [[bench]]
 name = "hash_benchmark"
