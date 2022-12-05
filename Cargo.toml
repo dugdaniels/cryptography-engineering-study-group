@@ -2,4 +2,5 @@
 members = [
     "session-one",
     "session-two",
+    "session-three",
 ]
