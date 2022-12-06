@@ -13,3 +13,9 @@ Q4. Let SHA-512-n be as in the previous exercise. Write a program that finds a m
 Q5. With command line tools or Criterion, benchmark the blake3 hash (default is 256 bit output), and compare it to benches of SHA3-256 and SHA-256 (when written without a number, SHA is assumed to be SHA2).
 
 > Completed in `session-three/benches/hash_benchmark.rs`.
+
+## Ch 6:
+
+Q5. Using an existing cryptography library, compute the MAC of the message: `4D 41 43 73 20 61 72 65 20 76 65 72 79 20 75 73 65 66 75 6C 20 69 6E 20 63 72 79 70 74 6F 67 72 61 70 68 79 21 20 20 20 20 20 20 20 20 20 20 20` using CBC-MAC with AES and the 256-bit key: `80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01`.
+
+> Completed in `session-three/src/mac.rs`.
