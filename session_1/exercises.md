@@ -4,7 +4,7 @@
 
 Q10. Describe a concrete example where improving the security of a system against one type of attack can increase the likelihood of other attacks.
 
-> Often, with residential houses, there is a window on or near the front door. Using a conventional lock on the door makes the door more secure, but the window becomes weakest link in the system. Someone can simply break the window to unlock the door.
+> Using the latest and greatest encryption algorithm can seem like a security improvement, but it could also open you up to a yet unknown attack vector. It can take years for a new algorithm to be vetted and proven secure.
 
 ## Ch 2:
 
@@ -18,19 +18,13 @@ Q4. Suppose Bob receives a messages signed using a digital signature scheme with
 
 Q6. Suppose a chosen-ciphertext attacker cannot recover the secret decryption key for an encryption scheme. Does this mean the encryption scheme is secure?
 
-> No, there are attack models that only use the plaintexts and/or cyphertexts to break the encryption scheme.
+> No, the attacker may still be able to recover information about the message without knowing the key.
 
 Q7. Consider a symmetric-key cryptosystem in which cryptographic keys are randomly selected from the set of all n-bit strings. Approximately what should n be in order to provide 128 bits of security against a birthday attack.
 
-> ```rust
-> 2.pow(256)
-> ```
+> 256
 
 ## General
-
-Suppose you read about RSA encryption and wanted to find it’s standard specification. Where would you look?
-
-> I would first get a high level overview of the algorithm from Wikipedia. Then, I would look for the original paper that introduced it. 
 
 Find two libraries for each of RSA, TLS/SSL, and AEAD. Evaluate the maturity each library, and skim the code. What about the library structure makes sense? How is their documentation? These links may help:
 * https://cryptography.rs/
