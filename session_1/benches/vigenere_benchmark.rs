@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use session_one::vigenere;
+use session_1::vigenere;
 
 pub fn encode_benchmark(c: &mut Criterion) {
     let text = black_box("attackatdawn");

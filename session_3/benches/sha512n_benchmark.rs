@@ -1,6 +1,6 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use session_three::sha512n;
-use session_three::sha512n::NSize;
+use session_3::sha512n;
+use session_3::sha512n::NSize;
 
 fn n_8_collision(c: &mut Criterion) {
     c.bench_function("n_8", |b| {

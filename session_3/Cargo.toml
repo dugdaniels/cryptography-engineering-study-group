@@ -1,23 +1,25 @@
 [package]
-name = "session-one"
+name = "session_3"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+aes = "0.8.2"
+blake3 = "1.3.3"
+cbc-mac = "0.1.1"
+criterion = "0.4.0"
+hex = "0.4.3"
+hex-literal = "0.3.4"
 rand = "0.8.5"
-rsa = "0.7.2"
-rsa-oaep-pss = "1"
 sha2 = "0.10.6"
-
-[dev-dependencies]
-criterion = "0.3"
+sha3 = "0.10.6"
 
 [[bench]]
-name = "rsa_benchmark"
+name = "sha512n_benchmark"
 harness = false
 
 [[bench]]
-name = "vigenere_benchmark"
+name = "hash_benchmark"
 harness = false

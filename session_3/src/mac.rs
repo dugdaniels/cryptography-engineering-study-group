@@ -1,12 +1,10 @@
-use aes::Aes256;
-use cbc_mac::{CbcMac, Mac};
-
-type Aes256Cbc = CbcMac<Aes256>;
-
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use aes::Aes256;
+    use cbc_mac::{CbcMac, Mac};
     use hex_literal::hex;
+
+    type Aes256Cbc = CbcMac<Aes256>;
 
     #[test]
     fn cbc_mac_works() {

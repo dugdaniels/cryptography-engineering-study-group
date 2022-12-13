@@ -1,7 +1,7 @@
 [workspace]
 members = [
-    "session-one",
-    "session-two",
-    "session-three",
-    "session-four",
+    "session_1",
+    "session_2",
+    "session_3",
+    "session_4",
 ]
